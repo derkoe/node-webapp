@@ -2,11 +2,14 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>The version is <%= version %></p>
-    <footer><a href="/">Home</a></footer>
+    <div id="container">
+      <header>ArgoCD Test</header>
+      <main>
+        <div id="version">Version: <%= version %></div>
+      </main>
+    </div>
   </body>
 </html>
