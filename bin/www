@@ -80,7 +80,6 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
@@ -88,3 +87,10 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+process.on('SIGTERM', () => {
+  debug('SIGTERM signal received: stopping HTTP server');
+  server.close(() => {
+    debug('HTTP server stopped');
+  })
+})
