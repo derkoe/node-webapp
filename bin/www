@@ -88,9 +88,13 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-process.on('SIGTERM', () => {
-  debug('SIGTERM signal received: stopping HTTP server');
+function stopServer() {
+  console.info('SIGTERM signal received: stopping HTTP server');
   server.close(() => {
-    debug('HTTP server stopped');
-  })
-})
+    console.info('HTTP server stopped');
+  });
+}
+
+process.on('SIGTERM', stopServer);
+process.on('SIGINT', stopServer);
+
